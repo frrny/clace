@@ -116,8 +116,6 @@ html(lang="en")
                     #[span(name="user-dropdown") #{user.usernameSet ? user.name : ""}] #[span.caret]
                 ul.dropdown-menu
                   +renderNavItem("Your Profile", "/account", "user-circle-o")
-                  +renderNavItem("What's New", "javascript:void(0)", "list")
-                  +renderNavItem("Rules", "/guidelines", "handshake-o")
                   li.divider(role="separator")
                   +renderNavItem("Sign Out", `/signout?redirectURL=${redirectURLPart}`, "sign-out")
             else
