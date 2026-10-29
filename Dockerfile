@@ -1,16 +1,13 @@
 FROM node:carbon
-LABEL maintainer="applebetas@dynastic.co"
 
-# Create app directory
 WORKDIR /usr/src/app
 
-# Copy over package.json (and package-lock.json, if applicable)
+RUN git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+RUN mkdir -p /var/log/place
+
 COPY package*.json yarn.lock ./
+RUN yarn install --ignore-engines
 
-# Install app dependencies
-RUN yarn install
-
-# Bundle app source
 COPY . .
 
 EXPOSE 3000
